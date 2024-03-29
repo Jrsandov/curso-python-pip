@@ -11,11 +11,11 @@ def run():
   percentages = list(map(lambda x: x['World Population Percentage'], data))
   '''
 
-  data = read.read_csv('data.csv')
-  data = list(filter(lambda item : item['Continent'] == 'South America', data))
+  df = pd.read_csv('data.csv')
+  df = df[df['Continent'] == 'Africa']
 
-  countries = list(map(lambda x: x["Country"], data))
-  percentages = list(map(lambda x: x["World Population Percentage"], data))
+  countries = df["Country"].values
+  percentages = df["World Population Percentage"].values
   charts.generate_pie_chart(countries, percentages)
 
 
